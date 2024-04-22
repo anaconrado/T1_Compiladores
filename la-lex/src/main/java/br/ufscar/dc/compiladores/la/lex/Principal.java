@@ -1,5 +1,6 @@
 package br.ufscar.dc.compiladores.la.lex;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 import org.antlr.v4.runtime.Token;
@@ -16,8 +17,14 @@ public class Principal {
 
         Token t = null;
 
-        while((t=lex.nextToken()).getType() != Token.EOF) {
-            System.out.print("<"+ t.getType()+","+t.getText()+">");
+        // Colocando saída em arquivo do segundo argumento 
+        String filename = args[1];
+        FileWriter writer = new FileWriter(filename);
+
+        while ((t=lex.nextToken()).getType() != Token.EOF) {
+            writer.write("<'" + t.getText() + "','" + t.getText() + "'>\n");
         }
+
+        writer.close();
     }
 }
