@@ -2,7 +2,13 @@ lexer grammar lalex;
 
 // PCs Identificadas ao longo dos testes
 PALAVRA_CHAVE: 'algoritmo' | 'declare' | 'literal' | 'inteiro' | 'leia' | 'escreva' | 'fim_algoritmo' |
- ':' | '(' | ')' | ',' | '/' ;
+ ':' | '(' | ')' | ',' | '/' | 'real' | 'tipo' | 'ou' | 'e' | 'se' | 'entao' | 'senao' | 'fim_se' | 'nao'
+| 'funcao' | 'retorne' | 'fim_funcao' | 'enquanto' | 'fim_enquanto' | 'falso' | 'verdadeiro'
+| 'para' | 'ate' | 'faca' | 'fim_para' | 'procedimento' | 'fim_procedimento' | 'registro' | 'fim_registro' |
+'caso' | 'fim_caso' | 'seja' | 'leia' | 'escreva' | 'logico' | 'var' | 'constante' |
+'<=' | '>=' | '=' | '<' | '<>' | '>' | '^' | '&' | '[' | ']' | '+' | '-' | '..' | '*' | '%' | ':' | '.' | '(' | ')' 
+| ',' | '/' | '<-' ;                  
+
 
 // Definições do professor 
 NUM_INT: ('+'|'-')? ('0'..'9')+;
