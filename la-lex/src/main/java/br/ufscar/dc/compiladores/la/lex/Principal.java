@@ -25,11 +25,30 @@ public class Principal {
             String tokenName = lalex.VOCABULARY.getDisplayName(t.getType());
 
             // Caso em que o tipo é uma PC, então repetimos o nome 
-            if (tokenName == "PALAVRA_CHAVE")
-                writer.write("<'" + t.getText() + "','" + t.getText() + "'>\n");
+            // Testa para erro de cadeia não fechada
+            if (tokenName.equals("ERRO_CADEIA")){
+                writer.write("Linha " + t.getLine() + ": cadeia literal nao fechada\n");
+                break;
+            }
 
-            else
+            // Testa para erro de comentário não fechado
+            else if (tokenName.equals("ERRO_COMENTARIO")){
+                writer.write("Linha " + t.getLine() + ": comentario nao fechado\n");
+                break;
+            }
+
+            // Testa para caracteres não reconhecidos
+            else if (tokenName.equals("NAO_RECONHECIDO")){
+                writer.write("Linha " + t.getLine() + ": " + t.getText() + " - simbolo nao identificado\n");
+                break;
+            }
+            
+            else if (tokenName != "PALAVRA_CHAVE")
                 writer.write("<'" + t.getText() + "'," + tokenName + ">\n");
+
+            // Condicional para exibir tokens de palavra-chave
+            else
+                writer.write("<'" + t.getText() + "','" + t.getText() + "'>\n");
         }
 
         writer.close();
