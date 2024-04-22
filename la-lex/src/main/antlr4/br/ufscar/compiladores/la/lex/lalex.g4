@@ -12,18 +12,18 @@ NUM_REAL: ('+'|'-')? ('0'..'9')+ '.' ('0'..'9')+;
 // Começa e termina com " e pode ser seguido de qualquer caractere exceto \n
 CADEIA: '"' ~('\n'|'"')* '"';
 
-QUEBRA_LINHA: '\n' { skip(); };
+WB: ' ' -> skip;
 
-ESPACO_EM_BRANCO: ' ' { skip(); };
+QUEBRA_LINHA: '\n' -> skip;
 
-TAB: '\t' { skip(); };
+TAB: '\t' -> skip;
 
 IDENT: LETRA (LETRA | DIGITO | '_')*;
 
 /* comentários nessa linguagem são caracterizados por começarem e terminarem 
 com {} e ter qualquer caractere dentro exceto \n 
 */
-COMENTARIO: '{ ' ~('\n'|'}')* '}' { skip(); };
+COMENTARIO: '{ ' ~('\n'|'}')* '}' -> skip;
 
 fragment
 LETRA: ('a'..'z') | ('A'..'Z');

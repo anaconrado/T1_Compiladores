@@ -21,8 +21,15 @@ public class Principal {
         String filename = args[1];
         FileWriter writer = new FileWriter(filename);
 
-        while ((t=lex.nextToken()).getType() != Token.EOF) {
-            writer.write("<'" + t.getText() + "','" + t.getText() + "'>\n");
+        while ((t = lex.nextToken()).getType() != Token.EOF) {
+            String tokenName = lalex.VOCABULARY.getDisplayName(t.getType());
+
+            // Caso em que o tipo é uma PC, então repetimos o nome 
+            if (tokenName == "PALAVRA_CHAVE")
+                writer.write("<'" + t.getText() + "','" + t.getText() + "'>\n");
+
+            else
+                writer.write("<'" + t.getText() + "'," + tokenName + ">\n");
         }
 
         writer.close();
