@@ -30,8 +30,7 @@
       <artifactId>antlr4</artifactId>
       <version>4.12.0</version>
       <classifier>complete</classifier>
-  </dependency>
-
+    </dependency>
   </dependencies>
   
   <build>
@@ -54,7 +53,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>br.ufscar.dc.compiladores.alguma.lexico.Principal</mainClass>
+                        <mainClass>br.ufscar.dc.compiladores.la.lex.Principal</mainClass>
                     </manifest>
                 </archive>
                 <descriptorRefs>

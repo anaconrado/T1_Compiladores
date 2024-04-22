@@ -1,3 +1,6 @@
-Letra=1
-Digito=2
-Variavel=3
+PALAVRA_CHAVE=1
+NUM_INT=2
+NUM_REAL=3
+CADEIA=4
+WS=5
+IDENT=6
