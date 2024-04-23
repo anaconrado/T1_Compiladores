@@ -10,10 +10,10 @@ PALAVRA_CHAVE: 'algoritmo' | 'declare' | 'literal' | 'inteiro' | 'leia' | 'escre
 | ',' | '/' | '<-' ;                  
 
 
-// Definições do professor 
-NUM_INT: ('+'|'-')? ('0'..'9')+;
+NUM_INT: ('0'..'9')+;
 
-NUM_REAL: ('+'|'-')? ('0'..'9')+ '.' ('0'..'9')+;
+// Nessa linguagem, o token é um símbolo separado do número
+NUM_REAL: ('0'..'9')+ ('.' ('0'..'9')+)?;
 
 // Começa e termina com " e pode ser seguido de qualquer caractere exceto \n
 CADEIA: '"' ~('\n'|'"')* '"';
@@ -31,8 +31,17 @@ com {} e ter qualquer caractere dentro exceto \n
 */
 COMENTARIO: '{ ' ~('\n'|'}')* '}' -> skip;
 
+ERRO_CADEIA: '"' ~('\n'|'"')* '\n';
+
+ERRO_COMENTARIO: '{' ~('\n'|'}')* '\n';
+
+NAO_RECONHECIDO: '~' | '}' | '$';
+
 fragment
 LETRA: ('a'..'z') | ('A'..'Z');
 
 fragment
 DIGITO: ('0'..'9');
+
+
+
